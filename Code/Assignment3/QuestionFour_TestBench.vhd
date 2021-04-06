@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   19:40:34 04/01/2021
+-- Create Date:   00:39:06 04/07/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionOne_PartA_TestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionFour_TestBench.vhd
 -- Project Name:  Assignment3
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: QuestionOne_PartA
+-- VHDL Test Bench Created by ISE for module: QuestionFour
 -- 
 -- Dependencies:
 -- 
@@ -32,28 +32,28 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY QuestionOne_PartA_TestBench IS
-END QuestionOne_PartA_TestBench;
+ENTITY QuestionFour_TestBench IS
+END QuestionFour_TestBench;
  
-ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS 
+ARCHITECTURE behavior OF QuestionFour_TestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT QuestionOne_PartA
+    COMPONENT QuestionFour
     PORT(
-         e : IN  std_logic;
-         i : IN  std_logic;
-         o : OUT  std_logic_vector(1 downto 0)
+         eeee : IN  std_logic;
+         iiii : IN  std_logic_vector(2 downto 0);
+         oooo : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal e : std_logic := '0';
-   signal i : std_logic := '0';
+   signal eeee : std_logic := '0';
+   signal iiii : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal o : std_logic_vector(1 downto 0);
+   signal oooo : std_logic_vector(7 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -62,22 +62,34 @@ ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: QuestionOne_PartA PORT MAP (
-          e => e,
-          i => i,
-          o => o
+   uut: QuestionFour PORT MAP (
+          eeee => eeee,
+          iiii => iiii,
+          oooo => oooo
         );
 
-   -- Stimulus process
+     -- Stimulus process
    stim_proc: process
-   begin
-		e<='0';
-		i<='0';
+   begin		
+      eeee<='0';
+		iiii<="000";
 		wait for 1 ps;
-		e<='1';
-		i<='0';
+		eeee<='1';
+		iiii<="000";
 		wait for 1 ps;
-		i<='1';
+		iiii<="001";
+		wait for 1 ps;
+		iiii<="010";
+		wait for 1 ps;
+		iiii<="011";
+		wait for 1 ps;
+		iiii<="100";
+		wait for 1 ps;
+		iiii<="101";
+		wait for 1 ps;
+		iiii<="110";
+		wait for 1 ps;
+		iiii<="111";
 		wait for 1 ps;
    end process;
 END;

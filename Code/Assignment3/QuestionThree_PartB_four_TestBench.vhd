@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   19:40:34 04/01/2021
+-- Create Date:   22:17:27 04/06/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionOne_PartA_TestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionThree_PartB_four_TestBench.vhd
 -- Project Name:  Assignment3
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: QuestionOne_PartA
+-- VHDL Test Bench Created by ISE for module: QuestionThree_PartB_four
 -- 
 -- Dependencies:
 -- 
@@ -32,28 +32,28 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY QuestionOne_PartA_TestBench IS
-END QuestionOne_PartA_TestBench;
+ENTITY QuestionThree_PartB_four_TestBench IS
+END QuestionThree_PartB_four_TestBench;
  
-ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS 
+ARCHITECTURE behavior OF QuestionThree_PartB_four_TestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT QuestionOne_PartA
+    COMPONENT QuestionThree_PartB_four
     PORT(
          e : IN  std_logic;
-         i : IN  std_logic;
-         o : OUT  std_logic_vector(1 downto 0)
+         iii : IN  std_logic_vector(2 downto 0);
+         ooo : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
    signal e : std_logic := '0';
-   signal i : std_logic := '0';
+   signal iii : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal o : std_logic_vector(1 downto 0);
+   signal ooo : std_logic_vector(7 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -62,22 +62,35 @@ ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: QuestionOne_PartA PORT MAP (
+   uut: QuestionThree_PartB_four PORT MAP (
           e => e,
-          i => i,
-          o => o
+          iii => iii,
+          ooo => ooo
         );
 
    -- Stimulus process
    stim_proc: process
-   begin
-		e<='0';
-		i<='0';
+   begin		
+      e<='0';
+		iii<="000";
 		wait for 1 ps;
 		e<='1';
-		i<='0';
+		iii<="000";
 		wait for 1 ps;
-		i<='1';
+		iii<="001";
+		wait for 1 ps;
+		iii<="010";
+		wait for 1 ps;
+		iii<="011";
+		wait for 1 ps;
+		iii<="100";
+		wait for 1 ps;
+		iii<="101";
+		wait for 1 ps;
+		iii<="110";
+		wait for 1 ps;
+		iii<="111";
 		wait for 1 ps;
    end process;
+
 END;

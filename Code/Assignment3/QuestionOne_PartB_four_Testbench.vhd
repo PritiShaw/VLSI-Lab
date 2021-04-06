@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   19:40:34 04/01/2021
+-- Create Date:   16:38:51 04/06/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionOne_PartA_TestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionOne_PartB_four_Testbench.vhd
 -- Project Name:  Assignment3
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: QuestionOne_PartA
+-- VHDL Test Bench Created by ISE for module: QuestionOne_PartB_four
 -- 
 -- Dependencies:
 -- 
@@ -32,14 +32,14 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY QuestionOne_PartA_TestBench IS
-END QuestionOne_PartA_TestBench;
+ENTITY QuestionOne_PartB_four_Testbench IS
+END QuestionOne_PartB_four_Testbench;
  
-ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS 
+ARCHITECTURE behavior OF QuestionOne_PartB_four_Testbench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT QuestionOne_PartA
+    COMPONENT QuestionOne_PartB_four
     PORT(
          e : IN  std_logic;
          i : IN  std_logic;
@@ -62,11 +62,13 @@ ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: QuestionOne_PartA PORT MAP (
+   uut: QuestionOne_PartB_four PORT MAP (
           e => e,
           i => i,
           o => o
         );
+
+   -- Clock process definitions
 
    -- Stimulus process
    stim_proc: process

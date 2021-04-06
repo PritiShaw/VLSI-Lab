@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   19:40:34 04/01/2021
+-- Create Date:   01:12:24 04/07/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionOne_PartA_TestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionFive_TestBench.vhd
 -- Project Name:  Assignment3
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: QuestionOne_PartA
+-- VHDL Test Bench Created by ISE for module: QuestionFive
 -- 
 -- Dependencies:
 -- 
@@ -32,28 +32,28 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY QuestionOne_PartA_TestBench IS
-END QuestionOne_PartA_TestBench;
+ENTITY QuestionFive_TestBench IS
+END QuestionFive_TestBench;
  
-ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS 
+ARCHITECTURE behavior OF QuestionFive_TestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT QuestionOne_PartA
+    COMPONENT QuestionFive
     PORT(
-         e : IN  std_logic;
-         i : IN  std_logic;
-         o : OUT  std_logic_vector(1 downto 0)
+         eeeee : IN  std_logic;
+         iiiii : IN  std_logic_vector(3 downto 0);
+         oooo : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal e : std_logic := '0';
-   signal i : std_logic := '0';
+   signal eeeee : std_logic := '0';
+   signal iiiii : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
-   signal o : std_logic_vector(1 downto 0);
+   signal oooo : std_logic_vector(15 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -62,22 +62,52 @@ ARCHITECTURE behavior OF QuestionOne_PartA_TestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: QuestionOne_PartA PORT MAP (
-          e => e,
-          i => i,
-          o => o
+   uut: QuestionFive PORT MAP (
+          eeeee => eeeee,
+          iiiii => iiiii,
+          oooo => oooo
         );
 
+   -- Clock process definitions
    -- Stimulus process
    stim_proc: process
-   begin
-		e<='0';
-		i<='0';
+   begin		
+		eeeee<='0';
+		iiiii<="0000";
 		wait for 1 ps;
-		e<='1';
-		i<='0';
+		eeeee<='1';
+		iiiii<="0000";
 		wait for 1 ps;
-		i<='1';
+		iiiii<="0001";
 		wait for 1 ps;
-   end process;
+		iiiii<="0010";
+		wait for 1 ps;
+		iiiii<="0011";
+		wait for 1 ps;
+		iiiii<="0100";
+		wait for 1 ps;
+		iiiii<="0101";
+		wait for 1 ps;
+		iiiii<="0110";
+		wait for 1 ps;
+		iiiii<="0111";
+		wait for 1 ps;
+		eeeee<='1';
+		iiiii<="1000";
+		wait for 1 ps;
+		iiiii<="1001";
+		wait for 1 ps;
+		iiiii<="1010";
+		wait for 1 ps;
+		iiiii<="1011";
+		wait for 1 ps;
+		iiiii<="1100";
+		wait for 1 ps;
+		iiiii<="1101";
+		wait for 1 ps;
+		iiiii<="1110";
+		wait for 1 ps;
+		iiiii<="1111";
+		wait for 1 ps;
+	end process;
 END;
