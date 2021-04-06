@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   01:12:24 04/07/2021
+-- Create Date:   02:21:49 04/07/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/QuestionFive_TestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment3/Annexure1_TestBench.vhd
 -- Project Name:  Assignment3
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: QuestionFive
+-- VHDL Test Bench Created by ISE for module: Annexure1
 -- 
 -- Dependencies:
 -- 
@@ -32,28 +32,28 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY QuestionFive_TestBench IS
-END QuestionFive_TestBench;
+ENTITY Annexure1_TestBench IS
+END Annexure1_TestBench;
  
-ARCHITECTURE behavior OF QuestionFive_TestBench IS 
+ARCHITECTURE behavior OF Annexure1_TestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT QuestionFive
+    COMPONENT Annexure1
     PORT(
-         eeeee : IN  std_logic;
-         iiiii : IN  std_logic_vector(3 downto 0);
-         oooo : OUT  std_logic_vector(15 downto 0)
+         enable : IN  std_logic;
+         input : IN  std_logic_vector(3 downto 0);
+         output : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal eeeee : std_logic := '0';
-   signal iiiii : std_logic_vector(3 downto 0) := (others => '0');
+   signal enable : std_logic := '0';
+   signal input : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
-   signal oooo : std_logic_vector(15 downto 0);
+   signal output : std_logic_vector(15 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -62,51 +62,50 @@ ARCHITECTURE behavior OF QuestionFive_TestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: QuestionFive PORT MAP (
-          eeeee => eeeee,
-          iiiii => iiiii,
-          oooo => oooo
+   uut: Annexure1 PORT MAP (
+          enable => enable,
+          input => input,
+          output => output
         );
-
-   -- Clock process definitions
    -- Stimulus process
    stim_proc: process
    begin		
-		eeeee<='0';
-		iiiii<="0000";
+      enable<='0';
+		input<="0000";
 		wait for 1 ps;
-		eeeee<='1';
-		iiiii<="0000";
+		enable<='1';
+		input<="0000";
 		wait for 1 ps;
-		iiiii<="0001";
+		input<="0001";
 		wait for 1 ps;
-		iiiii<="0010";
+		input<="0010";
 		wait for 1 ps;
-		iiiii<="0011";
+		input<="0011";
 		wait for 1 ps;
-		iiiii<="0100";
+		input<="0100";
 		wait for 1 ps;
-		iiiii<="0101";
+		input<="0101";
 		wait for 1 ps;
-		iiiii<="0110";
+		input<="0110";
 		wait for 1 ps;
-		iiiii<="0111";
+		input<="0111";
 		wait for 1 ps;
-		iiiii<="1000";
+		input<="1000";
 		wait for 1 ps;
-		iiiii<="1001";
+		input<="1001";
 		wait for 1 ps;
-		iiiii<="1010";
+		input<="1010";
 		wait for 1 ps;
-		iiiii<="1011";
+		input<="1011";
 		wait for 1 ps;
-		iiiii<="1100";
+		input<="1100";
 		wait for 1 ps;
-		iiiii<="1101";
+		input<="1101";
 		wait for 1 ps;
-		iiiii<="1110";
+		input<="1110";
 		wait for 1 ps;
-		iiiii<="1111";
+		input<="1111";
 		wait for 1 ps;
-	end process;
+   end process;
+
 END;
