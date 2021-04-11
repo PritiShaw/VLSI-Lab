@@ -69,43 +69,26 @@ BEGIN
         );
    -- Stimulus process
    stim_proc: process
+	variable k,j,a:integer;
    begin		
-      enable<='0';
-		input<="0000";
+		if enable='0' then
+			enable<='1';
+		elsif enable='1' then
+			enable<='0';
+		end if;
+		for k in 0 to 15 loop
+			j:=k;
+			a:=0;
+			while a<4 loop
+				if (j rem 2)=0 then
+					input(a)<='0';
+				elsif (j rem 2)=1 then
+					input(a)<='1';
+				end if;
+				j:=j/2;
+				a:=a+1;
+			end loop;
 		wait for 1 ps;
-		enable<='1';
-		input<="0000";
-		wait for 1 ps;
-		input<="0001";
-		wait for 1 ps;
-		input<="0010";
-		wait for 1 ps;
-		input<="0011";
-		wait for 1 ps;
-		input<="0100";
-		wait for 1 ps;
-		input<="0101";
-		wait for 1 ps;
-		input<="0110";
-		wait for 1 ps;
-		input<="0111";
-		wait for 1 ps;
-		input<="1000";
-		wait for 1 ps;
-		input<="1001";
-		wait for 1 ps;
-		input<="1010";
-		wait for 1 ps;
-		input<="1011";
-		wait for 1 ps;
-		input<="1100";
-		wait for 1 ps;
-		input<="1101";
-		wait for 1 ps;
-		input<="1110";
-		wait for 1 ps;
-		input<="1111";
-		wait for 1 ps;
+		end loop;
    end process;
-
 END;
