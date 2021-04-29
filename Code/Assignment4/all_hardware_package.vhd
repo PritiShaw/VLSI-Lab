@@ -32,6 +32,9 @@ package all_hardware_package is
 	procedure decimalToBinaryProcedure(decimal:in integer; numberOfBits:in integer; binary:out std_logic_vector);
 	procedure fullAdderProcedure(a:in std_logic; b:in std_logic; c:in std_logic; cout:out std_logic; sum:out std_logic);
 	procedure fourBitRippleCarryAdderProcedure(a:in std_logic_vector;b:in std_logic_vector;cin:in std_logic;s:out std_logic_vector);
+	procedure adderSubtractorProcedure(a:in std_logic_vector;b:in std_logic_vector;c:in std_logic;s:out std_logic_vector);
+	procedure bcdAdderProcedure(a:in std_logic_vector;b:in std_logic_vector;s:out std_logic_vector);
+
 end all_hardware_package;
 
 package body all_hardware_package is
@@ -103,5 +106,34 @@ package body all_hardware_package is
 					prock:fullAdderProcedure(a(k),b(k),c(k),c(k+1),s(k));
 			end loop;
 			s(4):=c(4);
+	end procedure;
+	
+	procedure adderSubtractorProcedure(a:in std_logic_vector;b:in std_logic_vector;c:in std_logic;s:out std_logic_vector) is
+	variable p:std_logic_vector(3 downto 0);
+	variable ss:std_logic_vector(4 downto 0);
+	begin
+			p(3 downto 0):=b(3 downto 0) xor (c & c & c & c);
+			proc3:fourBitRippleCarryAdderProcedure(a(3 downto 0),p(3 downto 0),c,ss(4 downto 0));
+			if c='1' then
+					if ss(4)='1' then
+							ss(4):='0';
+					elsif ss(4)='0' then 
+							ss(4):='1';
+					end if;
+			end if;
+			s:=ss;
+	end procedure;
+	
+	procedure bcdAdderProcedure(a:in std_logic_vector;b:in std_logic_vector;s:out std_logic_vector) is
+	variable p:std_logic_vector(4 downto 0);
+	variable q:std_logic_vector(3 downto 0);
+	variable c,z:std_logic;
+	begin
+			c:='0';
+			proc4:fourBitRippleCarryAdderProcedure(a(3 downto 0),b(3 downto 0),c,p(4 downto 0));
+			z:=p(4) or (p(3) and p(2)) or (p(3) and p(1));
+			q:=c & z & z & c;
+			proc5:fourBitRippleCarryAdderProcedure(p(3 downto 0),q(3 downto 0),c,s(4 downto 0));
+			s(4):=z;
 	end procedure;
 end all_hardware_package;
