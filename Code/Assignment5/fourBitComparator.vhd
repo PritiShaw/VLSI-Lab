@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    18:22:30 05/07/2021 
+-- Create Date:    19:01:24 05/07/2021 
 -- Design Name: 
--- Module Name:    twoBitComparator - Behavioral 
+-- Module Name:    fourBitComparator - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,19 +29,19 @@ use work.allHardwarePackage.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity twoBitComparator is
-    Port ( a : in  STD_LOGIC_VECTOR (1 downto 0);
-           b : in  STD_LOGIC_VECTOR (1 downto 0);
-           s : out  STD_LOGIC_VECTOR (2 downto 0));
-end twoBitComparator;
+entity fourBitComparator is
+    Port ( aa : in  STD_LOGIC_VECTOR (3 downto 0);
+           bb : in  STD_LOGIC_VECTOR (3 downto 0);
+           ss : out  STD_LOGIC_VECTOR (2 downto 0));
+end fourBitComparator;
 
-architecture Behavioral of twoBitComparator is
+architecture Behavioral of fourBitComparator is
 
 begin
-	process(a,b)
-	variable ss:std_logic_vector(2 downto 0);
-	begin
-			twoBitComparatorProcedure(a(1 downto 0),b(1 downto 0),ss(2 downto 0));
-			s(2 downto 0)<=ss(2 downto 0);
-	end process;
+p1:process(aa,bb)
+variable sss:std_logic_vector(2 downto 0);
+begin
+		fourBitComparatorProcedure(aa,bb,sss);
+		ss<=sss;
+end process;
 end Behavioral;
