@@ -33,7 +33,8 @@ package allHardwarePackage is
 	procedure twoCrossOneMuxProcedure(i: in std_logic_vector;s:in std_logic;o: out std_logic);
    procedure eightCrossOneMuxProcedure(i: in std_logic_vector;s:in std_logic_vector;o: out std_logic);
 	procedure sixteenCrossOneMuxProcedure(i: in std_logic_vector;s:in std_logic_vector;o: out std_logic);
-
+	procedure sixteenCrossOneMuxUsing82Procedure(i: in std_logic_vector;s:in std_logic_vector;o: out std_logic);
+	
 end allHardwarePackage;
 
 package body allHardwarePackage is
@@ -111,19 +112,32 @@ package body allHardwarePackage is
 		 end loop;
 		 procc:twoCrossOneMuxProcedure(p(1 downto 0),s(2),o);
 	 end procedure;
-	 
+	
 	 procedure sixteenCrossOneMuxProcedure(i: in std_logic_vector;s:in std_logic_vector;o: out std_logic) is
-	 variable ii:std_logic_vector(3 downto 0);
 	 variable ss:std_logic_vector(1 downto 0);
-	 variable p:std_logic_vector(3 downto 0);
-	 variable k:integer;
+	 variable a,p:std_logic_vector(3 downto 0);
 	 begin
 			for k in 0 to 3 loop
-					ii(3 downto 0):= i(((4*k)+3) downto (4*k));
-					ss(1 downto 0):= s(1 downto 0);
-					prock:fourCrossOneMuxProcedure(ii(3 downto 0),ss(1 downto 0),p(k));
+				a:=i(4*k+3 downto 4*k);
+				ss:=s(1 downto 0);
+				fourCrossOneMuxProcedure(a,ss,p(k));
 			end loop;
-			procc:fourCrossOneMuxProcedure(p(3 downto 0),s(3 downto 2),o);
+			ss:=s(3 downto 2);
+			fourCrossOneMuxProcedure(p,ss,o);
+	 end procedure;
+	 
+	 procedure sixteenCrossOneMuxUsing82Procedure(i: in std_logic_vector;s:in std_logic_vector;o: out std_logic) is
+	 variable ss:std_logic_vector(2 downto 0);
+	 variable p:std_logic_vector(1 downto 0);
+	 variable a:std_logic_vector(7 downto 0);
+	 variable k:integer;
+	 begin
+			for k in 0 to 1 loop
+				a:=i(8*k+7 downto 8*k);
+				ss:=s(2 downto 0);
+				eightCrossOneMuxProcedure(a,ss,p(k));
+			end loop;
+			twoCrossOneMuxProcedure(p,s(3),o);
 	 end procedure;
 	 
 end allHardwarePackage;

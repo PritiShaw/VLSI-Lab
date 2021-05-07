@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    14:18:20 05/07/2021 
+-- Create Date:    15:07:59 05/07/2021 
 -- Design Name: 
--- Module Name:    sixteenCrossOneMux - Behavioral 
+-- Module Name:    sixteenCrossOneMux82 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,19 +29,19 @@ use work.allHardwarePackage.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity sixteenCrossOneMux is
+entity sixteenCrossOneMux82 is
     Port ( i : in  STD_LOGIC_VECTOR (15 downto 0);
-			  s : in  STD_LOGIC_VECTOR(3 downto 0);
-           o : out STD_LOGIC);
-end sixteenCrossOneMux;
+           s : in  STD_LOGIC_VECTOR (3 downto 0);
+           o : out  STD_LOGIC);
+end sixteenCrossOneMux82;
 
-architecture Behavioral of sixteenCrossOneMux is
+architecture Behavioral of sixteenCrossOneMux82 is
 
 begin
-	process(i, s)
+process(i, s)
 		variable oo: STD_LOGIC;
 		begin
-			sixteenCrossOneMuxProcedure(i,s,oo);
+			sixteenCrossOneMuxUsing82Procedure(i,s,oo);
 			o<=oo;
 		end process;
 end Behavioral;

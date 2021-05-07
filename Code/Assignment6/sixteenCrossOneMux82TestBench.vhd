@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   14:26:51 05/07/2021
+-- Create Date:   15:27:42 05/07/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment6/sixteenCrossOneMuxTestBench.vhd
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment6/sixteenCrossOneMux82TestBench.vhd
 -- Project Name:  Assignment6
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: sixteenCrossOneMux
+-- VHDL Test Bench Created by ISE for module: sixteenCrossOneMux82
 -- 
 -- Dependencies:
 -- 
@@ -32,14 +32,14 @@ use work.allHardwarePackage.all;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY sixteenCrossOneMuxTestBench IS
-END sixteenCrossOneMuxTestBench;
+ENTITY sixteenCrossOneMux82TestBench IS
+END sixteenCrossOneMux82TestBench;
  
-ARCHITECTURE behavior OF sixteenCrossOneMuxTestBench IS 
+ARCHITECTURE behavior OF sixteenCrossOneMux82TestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT sixteenCrossOneMux
+    COMPONENT sixteenCrossOneMux82
     PORT(
          i : IN  std_logic_vector(15 downto 0);
          s : IN  std_logic_vector(3 downto 0);
@@ -62,15 +62,15 @@ ARCHITECTURE behavior OF sixteenCrossOneMuxTestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: sixteenCrossOneMux PORT MAP (
+   uut: sixteenCrossOneMux82 PORT MAP (
           i => i,
           s => s,
           o => o
         );
 
    -- Stimulus process
-   stim_proc: process	
-   variable k:integer;
+   stim_proc: process
+	variable k:integer;
 	variable binary:std_logic_vector(3 downto 0);
    begin		
 			for k in 0 to 15 loop
