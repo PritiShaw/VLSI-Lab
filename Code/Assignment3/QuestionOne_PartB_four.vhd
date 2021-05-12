@@ -38,9 +38,8 @@ end QuestionOne_PartB_four;
 architecture Behavioral of QuestionOne_PartB_four is
 
 begin
-	with (e&i) select 
-		o <= "01" when "10",
-			  "10" when "11",
-			  "00" when "00",
+	with i select 
+		o <= "01" when "0",
+			  "10" when "1",
 			  "ZZ" when others;	
 end Behavioral;
