@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    18:22:30 05/07/2021 
+-- Create Date:    00:23:12 05/08/2021 
 -- Design Name: 
--- Module Name:    twoBitComparator - Behavioral 
+-- Module Name:    Annexure1_FullAdder - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use work.allHardwarePackage.all;
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -29,19 +29,32 @@ use work.allHardwarePackage.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity twoBitComparator is
-    Port ( a : in b STD_LOGIC_VECTOR (1 downto 0);
-           b : in  STD_LOGIC_VECTOR (1 downto 0);
-           s : out  STD_LOGIC_VECTOR (2 downto 0));
-end twoBitComparator;
+entity Annexure1_FullAdder is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           c : in  STD_LOGIC;
+           sum : out  STD_LOGIC;
+           carry : out  STD_LOGIC);
+end Annexure1_FullAdder;
 
-architecture Behavioral of twoBitComparator is
+architecture Behavioral of Annexure1_FullAdder is
+
+component halfAdder is
+	Port (  aa : in  STD_LOGIC;
+           bb : in  STD_LOGIC;
+           ss : out  STD_LOGIC;
+           cc : out  STD_LOGIC);
+end component;
+
+signal c1,s1,c2,s2:std_logic;
 
 begin
-	process(a,b)
-	variable ss:std_logic_vector(2 downto 0);
+comp1:halfAdder port map(b,c,c1,s1);
+comp2:halfAdder port map(a,s1,c2,s2);
+p1:process(c1, c2)
 	begin
-			twoBitComparatorProcedure(a(1 downto 0),b(1 downto 0),ss(2 downto 0));
-			s(2 downto 0)<=ss(2 downto 0);
+			sum<=s2;
+			carry<=c1 or c2;
 	end process;
 end Behavioral;
+
