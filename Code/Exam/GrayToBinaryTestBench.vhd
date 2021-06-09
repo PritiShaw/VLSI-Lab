@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   14:26:51 05/07/2021
+-- Create Date:   16:35:00 06/08/2021
 -- Design Name:   
--- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Assignment6/sixteenCrossOneMuxTestBench.vhd
--- Project Name:  Assignment6
+-- Module Name:   /mnt/e/JU/8/VLSI/Lab/Code/Exam/GrayToBinaryTestBench.vhd
+-- Project Name:  Exam
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: sixteenCrossOneMux
+-- VHDL Test Bench Created by ISE for module: GrayCodeToBinary
 -- 
 -- Dependencies:
 -- 
@@ -27,33 +27,31 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-use work.allHardwarePackage.all;
+ 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY sixteenCrossOneMuxTestBench IS
-END sixteenCrossOneMuxTestBench;
+ENTITY GrayToBinaryTestBench IS
+END GrayToBinaryTestBench;
  
-ARCHITECTURE behavior OF sixteenCrossOneMuxTestBench IS 
+ARCHITECTURE behavior OF GrayToBinaryTestBench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT sixteenCrossOneMux
+    COMPONENT GrayCodeToBinary
     PORT(
-         i : IN  std_logic_vector(15 downto 0);
-         s : IN  std_logic_vector(3 downto 0);
-         o : OUT  std_logic
+         g : IN  std_logic_vector(3 downto 0);
+         b : OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal i : std_logic_vector(15 downto 0) := (others => '0');
-   signal s : std_logic_vector(3 downto 0) := (others => '0');
+   signal g : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
-   signal o : std_logic;
+   signal b : std_logic_vector(3 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -62,28 +60,45 @@ ARCHITECTURE behavior OF sixteenCrossOneMuxTestBench IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: sixteenCrossOneMux PORT MAP (
-          i => i,
-          s => s,
-          o => o
+   uut: GrayCodeToBinary PORT MAP (
+          g => g,
+          b => b
         );
 
    -- Stimulus process
-   stim_proc: process	
-   variable k:integer;
-	variable binary:std_logic_vector(3 downto 0);
+   stim_proc: process
    begin		
-			for k in 0 to 15 loop
-				prock: decimalToBinaryProcedure(k,4,binary(3 downto 0));
-				s(3 downto 0)<=binary(3 downto 0);
-				
-				i(15 downto 0)<=(others=>'0');
-				i(k)<='1';
-				wait for 1 ps;
-				
-				--i(15 downto 0)<=(others=>'1');
-				--i(k)<='0';
-				--wait for 1 ps;
-			end loop;
+		g<="0000";
+		wait for 1 ps;
+		g<="0001";
+		wait for 1 ps;
+		g<="0011";
+		wait for 1 ps;
+		g<="0010";
+		wait for 1 ps;
+		g<="0110";
+		wait for 1 ps;
+		g<="0111";
+		wait for 1 ps;
+		g<="0101";
+		wait for 1 ps;
+		g<="0100";
+		wait for 1 ps;
+		g<="1100";
+		wait for 1 ps;
+		g<="1101";
+		wait for 1 ps;
+		g<="1111";
+		wait for 1 ps;
+		g<="1110";
+		wait for 1 ps;
+		g<="1010";
+		wait for 1 ps;
+		g<="1011";
+		wait for 1 ps;
+		g<="1001";
+		wait for 1 ps;
+		g<="1000";
+		wait for 1 ps;
    end process;
 END;
